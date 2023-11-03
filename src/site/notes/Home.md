@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Home/","contentClasses":"cards cards-cover cards-2-3 table-max dashboard","tags":["teste","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry"],"created":"2023-11-03T00:15:20.844-03:00"}
+{"dg-publish":true,"permalink":"/Home/","contentClasses":"cards cards-cover cards-2-3 table-max","tags":["teste","gardenEntry"],"created":"2023-11-03T00:15:20.844-03:00"}
 ---
 
 
