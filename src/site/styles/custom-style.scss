@@ -1,13 +1,1186 @@
 body {
-    /***
-      ADD YOUR CUSTOM STYLIING HERE. (INSIDE THE body {...} section.)
-      IT WILL TAKE PRECEDENCE OVER THE STYLING IN THE STYLE.CSS FILE.
-   ***/
-    //  background-color: white;
-    //  .content {
-    //   font-size: 14px;
-    //  }
-    //  h1 {
-    //   color: black;
-    //  }
+  /***
+     ADD YOUR CUSTOM STYLIING HERE. (INSIDE THE body {...} section.)
+     IT WILL TAKE PRECEDENCE OVER THE STYLING IN THE STYLE.CSS FILE.
+  ***/
+   //  background-color: white;
+   //  .content {
+   //   font-size: 14px;
+   //  }
+   //  h1 {
+   //   color: black;
+   //  }
+ --image-grid-fit: cover;
+ --image-grid-background: transparent;
+ --img-grid-gap: 0.5rem;
+
+ --image-border-color: var(--background-modifier-border);
+ --image-border-width: 1px;
+ --image-border-padding: 8px;
+ --image-border-background: var(--td);
+
+ --micro: 70px;
+ --tiny: 100px;
+ --small: 200px;
+ --small-med: 300px;
+ --med-small: 400px;
+ --medium: 500px;
+ --med-tall: 600px;
+ --tall: 700px;
+
+ @media (max-width:400pt) {
+   body {
+     --img-grid-gap: 0.25rem;
+   }
+ }
+ 
+ .img-grid-ratio {
+   --image-grid-fit: contain;
+ }
+ 
+ .img-grid {
+ 
+   .image-embed.is-loaded {
+     line-height:0;
+     img {
+       background-color: var(--image-grid-background);
+       &:active {
+         background-color: transparent;
+       }
+     }
+   }
+ 
+   .markdown-preview-section {
+     /*img:not(.emoji):not([width]),
+     video {
+       width:100%;
+     }*/
+     > div:has(.image-embed) > p {
+       display: grid;
+       margin-block-start: var(--img-grid-gap);
+       margin-block-end: var(--img-grid-gap);
+       grid-column-gap: var(--img-grid-gap);
+       grid-row-gap: 0;
+       grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+       > br {
+         display:none;
+       }
+       > img {
+         object-fit: var(--image-grid-fit);
+         align-self: stretch;
+       }
+       > .internal-embed img {
+         object-fit: var(--image-grid-fit);
+         height:100%;
+         align-self: center;
+       }
+     }
+   }
+ }
+  /* Updated 2023-08-07 */
+
+.dashboard {
+ padding-left: 25px !important;
+ padding-right: 25px !important;
+ padding-top: 20px !important;
+}
+
+.dashboard .markdown-preview-section {
+ max-width: 100%;
+}
+
+/* Title at top of the document */
+.dashboard .markdown-preview-section .title {
+ top: 60px;
+ position: absolute;
+ font-size: 26pt !important;
+ font-weight: bolder;
+ letter-spacing: 8px;
+}
+
+.dashboard h1 {
+ border-bottom-style: dotted !important;
+ border-width: 1px !important;
+ padding-bottom: 3px !important;
+}
+
+
+/* Get rid of the parent bullet */
+.dashboard div.markdown-preview-section > div > ul > li > div.list-bullet {
+ display: none !important;
+}
+
+/* Remove the indentation guide lines */
+.dashboard.markdown-rendered.show-indentation-guide li > ul::before,
+.dashboard.markdown-rendered.show-indentation-guide li > ol::before {
+display: none;
+}
+
+div.markdown-preview-section > div > ul.has-list-bullet > li {
+ padding-left: 0p !important;
+}
+
+.dashboard div > ul {
+ list-style: none;
+ display: flex;
+ column-gap: 50px;
+ flex-flow: row wrap;
+}
+
+.dashboard div > ul > li {
+ min-width: 250px;
+ width: 15%;
+}
+
+/* Dataview support */
+.dashboard ul.dataview {
+ row-gap: 0px !important;
+ list-style-type: disc !important;
+}
+
+.popover.hover-popover {
+ --micro: 70px;
+ --tiny: 100px;
+ --small: 150px;
+ --small-med: 200px;
+ --med-small: 250px;
+ --medium: 300px;
+ --med-tall: 450px;
+ --tall: 500px;
+}
+
+/*----Mobile----*/
+@media (max-width: 500px) {
+ .theme-dark, .theme-light {
+   /*Mobile Sizes*/
+   --radius: 0px;
+   --micro: 70px;
+   --tiny: 100px;
+   --small: 150px;
+   --small-med: 200px;
+   --med-small: 250px;
+   --medium: 300px;
+   --med-tall: 450px;
+   --tall: 500px;
+ }
+}
+/*-Image Sizing-*/
+/*Fit image within bounds WITHOUT stretching*/
+img:is([alt*=cover], [alt*=cvr]),
+.image-embed:is([src*="#cover"], [src*="#cvr"]),
+span.image-embed:is([src*="#cover"], [src*="#cvr"]) img {
+ object-fit: cover;
+}
+
+/*Height*/
+img[alt][alt][alt*=hmicro],
+.image-embed[src*="#hmicro"] img {
+ height: var(--micro);
+}
+
+img[alt][alt][alt*=htiny],
+.image-embed[src*="#htiny"] img {
+ height: var(--tiny);
+}
+
+img[alt][alt][alt*=hsmall],
+.image-embed[src*="#hsmall"] img {
+ height: var(--small);
+}
+
+img[alt][alt][alt*=hs-med],
+.image-embed[src*="#hs-med"] img {
+ height: var(--small-med);
+}
+
+img[alt][alt][alt*=hm-sm],
+.image-embed[src*="#hs-sm"] img {
+ height: var(--med-small);
+}
+
+img[alt][alt][alt*=hmed],
+.image-embed[src*="#hmed"] img {
+ height: var(--medium);
+}
+
+img[alt][alt][alt*=hm-tl],
+.image-embed[src*="#hm-tl"],
+.image-embed[src*="#hm-tl"] img {
+ height: var(--med-tall);
+}
+
+img[alt][alt][alt*=htall],
+.image-embed[src*="#htall"] img {
+ height: var(--tall);
+}
+
+img[alt][alt][alt*=hfull],
+.internal-embed[src*="#hfull"] img {
+ height: 100%;
+}
+
+/*Width*/
+img[alt][alt][alt*=wmicro],
+.image-embed[src*="#wmicro"] img,
+.image-embed[alt*="#wmicro"]::after {
+ width: var(--micro);
+}
+
+img[alt][alt][alt*=wtiny],
+.image-embed[src*="#wtiny"] img,
+.image-embed[src*="#wtiny"]::after {
+ width: var(--tiny);
+}
+
+img[alt][alt][alt*=wsmall],
+.image-embed[src*="#wsmall"] img,
+.image-embed[src*="#wsmall"]::after {
+ width: var(--small);
+}
+
+img[alt][alt][alt*=ws-med],
+.image-embed[src*="#ws-med"] img,
+.image-embed[src*="#ws-med"]::after {
+ width: var(--small-med);
+}
+
+img[alt][alt][alt*=wm-sm],
+.image-embed[src*="#wm-sm"] img,
+.image-embed[src*="#wm-sm"]::after {
+ width: var(--med-small);
+}
+
+img[alt][alt][alt*=wmed],
+.image-embed[src*="#wmed"] img,
+.image-embed[src*="#wmed"]::after {
+ width: var(--medium);
+}
+
+img[alt][alt][alt*=wm-tl],
+.image-embed[src*="#wm-tl"] img,
+.image-embed[src*="#wm-tl"]::after {
+ width: var(--med-tall);
+}
+
+img[alt][alt][alt*=wtall],
+.image-embed[src*="#wtall"] img,
+.image-embed[src*="#wtall"]::after {
+ width: var(--tall);
+}
+
+img[alt][alt][alt*=wfull],
+.internal-embed[src*="#wfull"] img {
+ width: 100%;
+}
+
+/*Image Locations*/
+/*Center Image*/
+.img-adj-center,
+img:is([alt*=ctr], [alt*=center]) {
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+/*Left & Right*/
+:not(.is-live-preview) img:is([alt*=left], [alt*=locl]), :not(.is-live-preview) img[src*="#locl"] img,
+:not(.is-live-preview) .image-embed:is([alt*=left], [alt*=locl]),
+:not(.is-live-preview) .image-embed[src*="#locl"] img {
+ float: left;
+ margin-right: 2%;
+ margin-top: 0px;
+ margin-bottom: 0px;
+}
+:not(.is-live-preview) img:is([alt*=right], [alt*=locr]), :not(.is-live-preview) img[src*="#locr"] img,
+:not(.is-live-preview) .image-embed:is([alt*=right], [alt*=locr]),
+:not(.is-live-preview) .image-embed[src*="#locr"] img {
+ float: right;
+ margin-left: 2%;
+ margin-bottom: 0px;
+}
+
+/*--Image Position--*/
+img[alt*="p+"], .image-embed[src*="#p+"] img {
+ object-fit: cover;
+}
+
+/*Inner Image*/
+img[alt*="p+c"], .image-embed[src*="#p+c"] img {
+ object-position: center;
+}
+
+img[alt*="p+t"], .image-embed[src*="#p+t"] img {
+ object-position: top;
+}
+
+img[alt*="p+b"], .image-embed[src*="#p+b"] img {
+ object-position: bottom;
+}
+
+img[alt*="p+l"], .image-embed[src*="#p+l"] img {
+ object-position: left;
+}
+
+img[alt*="p+r"], .image-embed[src*="#p+r"] img {
+ object-position: right;
+}
+
+img[alt*="p+cl"], .image-embed[src*="#p+cl"] img {
+ object-position: 15%;
+}
+
+img[alt*="p+ccl"], .image-embed[src*="#p+ccl"] img {
+ object-position: 25%;
+}
+
+img[alt*="p+cr"], .image-embed[src*="#p+cr"] img {
+ object-position: 60%;
+}
+
+img[alt*="p+ccr"], .image-embed[src*="#p+ccr"] img {
+ object-position: 75%;
+}
+
+img[alt*="p+tc"], .image-embed[src*="#p+tc"] img {
+ object-position: 50% 10%;
+}
+
+img[alt*="p+tcc"], .image-embed[src*="#p+tcc"] img {
+ object-position: 50% 20%;
+}
+
+img[alt*="p+cct"], .image-embed[src*="#p+cct"] img {
+ object-position: 50% 30%;
+}
+
+img[alt*="p+ct"], .image-embed[src*="#p+ct"] img {
+ object-position: 50% 40%;
+}
+
+img[alt*="p+cb"], .image-embed[src*="#p+cb"] img {
+ object-position: 50% 60%;
+}
+
+img[alt*="p+ccb"], .image-embed[src*="#p+ccb"] img {
+ object-position: 50% 70%;
+}
+
+img[alt*="p+bc"], .image-embed[src*="#p+bc"] img {
+ object-position: 50% 80%;
+}
+
+img[alt*="p+bcc"], .image-embed[src*="#p+bcc"] img {
+ object-position: 50% 90%;
+}
+
+/*Invert Colors*/
+.theme-dark img[alt*=invertb], .theme-dark .image-embed[src*="#invertb"] {
+ filter: invert(1) hue-rotate(180deg);
+}
+.theme-dark img[alt*=invertbc],
+.theme-dark .image-embed[src*="#invertbc"] {
+ filter: invert(1) hue-rotate(180deg) contrast(1.5);
+}
+
+.theme-light img[alt*=invertw], .theme-light .image-embed[src*="#invertw"] {
+ filter: invert(1) hue-rotate(180deg);
+}
+.theme-light img[alt*=invertwc], .theme-light .image-embed[src*="#invertwc"] {
+ filter: invert(1) hue-rotate(180deg) contrast(1.45);
+}
+
+/*Fit image within bounds WITHOUT stretching*/
+img[alt*=cover],
+img:is([alt*=cover], [alt*=cvr]),
+.image-embed:is([src*="#cover"], [src*="#cvr"]),
+span.image-embed:is([src*="#cover"], [src*="#cvr"]) img {
+ object-fit: cover;
+}
+
+/*Fix Float Issues*/
+:is(img, .image-embed)[alt*=clear],
+.image-embed[src*="#clear"] {
+ clear: both;
+}
+
+img[alt*=unclr],
+.image-embed[src*="#unclr"] {
+ clear: none !important;
+}
+
+:not(.lp-img-float) .is-live-preview img:is([alt*=right], [alt*=locr]), :not(.lp-img-float) .is-live-preview img:is([alt*=left], [alt*=locl]), :not(.lp-img-float) .is-live-preview .image-embed:is([alt*=right], [alt*=locr]), :not(.lp-img-float) .is-live-preview .image-embed:is([alt*=left], [alt*=locl]) {
+ float: unset;
+}
+
+img:is([alt~=lp], [alt~=live-preview]):is([alt*=right], [alt*=locr]),
+.image-embed:is([alt~=lp], [alt~=live-preview]):is([alt*=right], [alt*=locr]) {
+ float: right !important;
+}
+img:is([alt~=lp], [alt~=live-preview]):is([alt*=left], [alt*=locl]),
+.image-embed:is([alt~=lp], [alt~=live-preview]):is([alt*=left], [alt*=locl]) {
+ float: left !important;
+}
+
+.clear-hr {
+ --hr-width: 100%;
+}
+
+.clear-headings :is(h1, h2, h3, h4, h5, h6),
+.clear-heading-1 h1,
+.clear-heading-2 h2,
+.clear-heading-3 h3,
+.clear-heading-4 h4,
+.clear-heading-5 h5,
+.clear-heading-6 h6 {
+ clear: both;
+}
+
+/*Banners*/
+img[alt*=banner],
+.image-embed[alt*=banner] img {
+ display: block;
+ object-fit: cover;
+ width: 100%;
+ margin-bottom: 0px;
+ clear: both;
+}
+
+img[alt~=banner],
+.image-embed[alt~=banner] img,
+.image-embed[src*="#banner"] {
+ height: var(--small);
+}
+
+img[alt~="banner+small"],
+.image-embed[alt~="banner+small"] img,
+.image-embed[src*="#banner+small"] {
+ height: var(--tiny);
+}
+
+img[alt~="banner+tall"],
+.image-embed[alt~="banner+tall"] img,
+.image-embed[src*="#banner+tall"] {
+ height: var(--medium);
+}
+
+:is(img, .internal-embed)[alt*=sban],
+:is(img, .internal-embed)[alt~=sban],
+.internal-embed[src*="#sban"] img {
+ object-fit: cover;
+ width: 100%;
+}
+
+/*Portait*/
+img[alt*=portrait],
+.image-embed[alt*=portrait] img {
+ object-fit: cover;
+}
+
+img[alt~=portrait],
+.image-embed[alt~=portrait] img,
+.image-embed[src~="#portrait"] {
+ height: var(--small-med);
+ width: 40%;
+}
+
+img[alt~="portrait+small"],
+.image-embed[alt~="portrait+small"] img,
+.image-embed[src~="#portrait+small"] {
+ height: var(--small);
+ width: 25%;
+}
+
+img[alt~="portrait+tall"],
+.image-embed[alt~="portrait+tall"] img,
+.image-embed[src~="#portrait+tall"] {
+ height: 500px;
+ width: 50%;
+}
+
+/*Profile*/
+img[alt*=profile],
+.image-embed[alt*=profile] img {
+ object-fit: cover;
+ border-radius: 50%;
+}
+
+img[alt~=profile],
+.image-embed[alt~=profile] img,
+.image-embed[src*="#profile"] {
+ height: var(--tiny);
+ width: var(--tiny);
+}
+
+img[alt~="profile+medium"],
+.image-embed[alt~="profile+medium"] img,
+.image-embed[src*="#profile+medium"] {
+ height: var(--small);
+ width: var(--small);
+}
+
+img[alt~="profile+tall"],
+.image-embed[alt~="profile+tall"] img,
+.image-embed[src*="#profile+tall"] {
+ height: var(--medium);
+ width: var(--medium);
+}
+
+img[alt~=sprf] {
+ object-fit: cover;
+ border-radius: 100%;
+}
+
+/*Image Shapes*/
+img[alt*=circle] {
+ border-radius: 50%;
+}
+
+img[alt~=square],
+.image-embed[alt~=square] img {
+ border-radius: 0;
+}
+
+img[alt~=border],
+.internal-embed[alt~=border] img {
+ border: var(--image-border-width) solid var(--image-border-color);
+ padding: var(--image-border-padding);
+ background: var(--image-border-background);
+}
+
+.mobile-image-viewer img[alt][alt][alt] {
+ height: 100%;
+ width: 100%;
+ object-fit: contain;
+}
+:root {
+ --cards-min-width: 180px;
+ --cards-max-width: 1fr;
+ --cards-mobile-width: 120px;
+ --cards-image-height: 400px;
+ --cards-padding: 1.2em;
+ --cards-image-fit: contain;
+ --cards-background: transparent;
+ --cards-border-width: 1px;
+ --cards-aspect-ratio: auto;
+ --cards-columns: repeat(auto-fit, minmax(var(--cards-min-width), var(--cards-max-width))); }
+
+@media (max-width: 400pt) {
+ :root {
+   --cards-min-width:var(--cards-mobile-width); } }
+.cards.table-100 table.dataview tbody,
+.table-100 .cards table.dataview tbody {
+ padding: 0.25rem 0.75rem; }
+
+.cards table.dataview tbody {
+ clear: both;
+ padding: 0.5rem 0;
+ display: grid;
+ grid-template-columns: var(--cards-columns);
+ grid-column-gap: 0.75rem;
+ grid-row-gap: 0.75rem; }
+.cards table.dataview > tbody > tr {
+ background-color: var(--cards-background);
+ border: var(--cards-border-width) solid var(--background-modifier-border);
+ display: flex;
+ flex-direction: column;
+ margin: 0;
+ padding: 0 0 calc(var(--cards-padding)/3) 0;
+ border-radius: 6px;
+ overflow: hidden;
+ transition: box-shadow 0.15s linear;
+ max-width: var(--cards-max-width); }
+.cards table.dataview > tbody > tr:hover {
+ border: var(--cards-border-width) solid var(--background-modifier-border-hover);
+ box-shadow: 0 4px 6px 0px rgba(0, 0, 0, 0.05), 0 1px 3px 1px rgba(0, 0, 0, 0.025);
+ transition: box-shadow 0.15s linear; }
+.cards table.dataview tbody > tr > td {
+ /* Paragraphs */
+ /* Links */
+ /* Buttons */
+ /* Lists */
+ /* Images */ }
+ .cards table.dataview tbody > tr > td:first-child {
+   font-weight: var(--bold-weight); }
+ .cards table.dataview tbody > tr > td:first-child a {
+   padding: 0 0 calc(var(--cards-padding)/3);
+   display: block; }
+ .cards table.dataview tbody > tr > td:not(:first-child) {
+   font-size: 90%;
+   color: var(--text-muted); }
+ .cards table.dataview tbody > tr > td .el-p {
+   display: block;
+   width: 100%; }
+ .cards table.dataview tbody > tr > td > *:not(.el-embed-image) {
+   padding: calc(var(--cards-padding)/3) 0; }
+ .cards table.dataview tbody > tr > td:not(:last-child):not(:first-child) > .el-p:not(.el-embed-image) {
+   border-bottom: 1px solid var(--background-modifier-border);
+   width: 100%; }
+ .cards table.dataview tbody > tr > td a {
+   text-decoration: none; }
+ .cards table.dataview tbody > tr > td > button {
+   width: 100%;
+   margin: calc(var(--cards-padding)/2) 0; }
+ .cards table.dataview tbody > tr > td:last-child > button {
+   margin-bottom: calc(var(--cards-padding)/6); }
+ .cards table.dataview tbody > tr > td > ul {
+   width: 100%;
+   padding: 0.25em 0 !important;
+   margin: 0 auto !important; }
+ .cards table.dataview tbody > tr > td:not(:last-child) > ul {
+   border-bottom: 1px solid var(--background-modifier-border); }
+ .cards table.dataview tbody > tr > td .el-embed-image {
+   background-color: var(--background-secondary);
+   display: block;
+   margin: 0 calc(var(--cards-padding)/-2) 0 calc(var(--cards-padding)/-2);
+   width: calc(100% + var(--cards-padding)); }
+ .cards table.dataview tbody > tr > td img {
+   aspect-ratio: var(--cards-aspect-ratio);
+   width: 100%;
+   object-fit: var(--cards-image-fit);
+   max-height: var(--cards-image-height);
+   background-color: var(--background-secondary);
+   vertical-align: bottom; }
+
+.markdown-source-view.mod-cm6.cards .dataview.table-view-table > tbody > tr > td,
+.trim-cols .cards table.dataview tbody > tr > td {
+ white-space: normal; }
+
+.cards .dataview.table-view-table > tbody > tr > td,
+.cards table.dataview tbody > tr > td,
+.markdown-source-view.mod-cm6.cards .dataview.table-view-table > tbody > tr > td,
+.markdown-source-view.mod-cm6.cards table.dataview tbody > tr > td {
+ border-bottom: none;
+ padding: 0 !important;
+ line-height: 1.2;
+ width: calc(100% - var(--cards-padding));
+ margin: 0 auto;
+ overflow: visible !important;
+ max-width: 100%;
+ display: flex; }
+
+.links-int-on .cards table.dataview tbody > tr > td a {
+ text-decoration: none; }
+
+
+/* Block button */
+.markdown-source-view.mod-cm6.cards .edit-block-button {
+ top: 0px; }
+
+/* ------------------- */
+/* Sorting menu */
+.cards.table-100 table.dataview thead > tr,
+.table-100 .cards table.dataview thead > tr {
+ right: 0.75rem; }
+
+.table-100 .cards table.dataview thead:before,
+.cards.table-100 table.dataview thead:before {
+ margin-right: 0.75rem; }
+
+.theme-light .cards table.dataview thead:before {
+ background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 100 100"><path fill="black" d="M49.792 33.125l-5.892 5.892L33.333 28.45V83.333H25V28.45L14.438 39.017L8.542 33.125L29.167 12.5l20.625 20.625zm41.667 33.75L70.833 87.5l-20.625 -20.625l5.892 -5.892l10.571 10.567L66.667 16.667h8.333v54.883l10.567 -10.567l5.892 5.892z"></path></svg>'); }
+
+.cards .el-pre + .el-lang-dataview .table-view-thead {
+ padding-top: 8px; }
+.cards table.dataview thead {
+ user-select: none;
+ width: 180px;
+ display: block;
+ float: right;
+ position: relative;
+ text-align: right;
+ height: 24px;
+ padding-bottom: 4px; }
+.cards table.dataview thead:hover:before {
+ opacity: 0.5;
+ background-color: var(--background-modifier-hover); }
+.cards table.dataview thead:before {
+ content: '';
+ position: absolute;
+ right: 0;
+ top: 0;
+ width: 10px;
+ height: 16px;
+ background-repeat: no-repeat;
+ cursor: var(--cursor);
+ text-align: right;
+ padding: var(--size-4-1) var(--size-4-2);
+ margin-bottom: 2px;
+ border-radius: var(--radius-s);
+ font-weight: 500;
+ font-size: var(--font-adaptive-small);
+ opacity: 0.25;
+ background-position: center center;
+ background-size: 16px;
+ background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 100 100"><path fill="white" d="M49.792 33.125l-5.892 5.892L33.333 28.45V83.333H25V28.45L14.438 39.017L8.542 33.125L29.167 12.5l20.625 20.625zm41.667 33.75L70.833 87.5l-20.625 -20.625l5.892 -5.892l10.571 10.567L66.667 16.667h8.333v54.883l10.567 -10.567l5.892 5.892z"></path></svg>'); }
+.cards table.dataview thead > tr {
+ top: -1px;
+ position: absolute;
+ display: none;
+ z-index: 9;
+ border: 1px solid var(--background-modifier-border-hover);
+ background-color: var(--background-secondary);
+ box-shadow: var(--shadow-s);
+ padding: 6px;
+ border-radius: var(--radius-m);
+ flex-direction: column;
+ margin: 26px 0 0 0;
+ width: 100%; }
+.cards table.dataview thead:hover > tr {
+ display: flex; }
+.cards table.dataview thead > tr > th {
+ display: block;
+ padding: 3px 30px 3px 6px !important;
+ border-radius: var(--radius-s);
+ width: 100%;
+ font-weight: 400;
+ color: var(--text-normal);
+ cursor: var(--cursor);
+ border: none;
+ font-size: var(--font-ui-small); }
+.cards table.dataview thead > tr > th[sortable-style="sortable-asc"],
+.cards table.dataview thead > tr > th[sortable-style="sortable-desc"] {
+ color: var(--text-normal); }
+.cards table.dataview thead > tr > th:hover {
+ color: var(--text-normal);
+ background-color: var(--background-modifier-hover); }
+
+/* ------------------- */
+/* Helper classes */
+.cards.cards-16-9 {
+ --cards-aspect-ratio: 16/9; }
+.cards.cards-1-1 {
+ --cards-aspect-ratio: 1/1; }
+.cards.cards-2-1 {
+ --cards-aspect-ratio: 2/1; }
+.cards.cards-2-3 {
+ --cards-aspect-ratio: 2/3; }
+.cards.cards-cols-1 {
+ --cards-columns: repeat(1, minmax(0, 1fr)); }
+.cards.cards-cols-2 {
+ --cards-columns: repeat(2, minmax(0, 1fr)); }
+.cards.cards-cover table.dataview tbody > tr > td img {
+ object-fit: cover; }
+.cards.cards-align-bottom table.dataview tbody > tr > td:last-child {
+ align-items: flex-end;
+ flex-grow: 1; }
+
+@media (max-width: 400pt) {
+ .cards table.dataview tbody > tr > td:not(:first-child) {
+   font-size: 80%; } }
+@media (min-width: 400pt) {
+ .cards-cols-3 {
+   --cards-columns: repeat(3, minmax(0, 1fr)); }
+
+ .cards-cols-4 {
+   --cards-columns: repeat(4, minmax(0, 1fr)); }
+
+ .cards-cols-5 {
+   --cards-columns: repeat(5, minmax(0, 1fr)); }
+
+ .cards-cols-6 {
+   --cards-columns: repeat(6, minmax(0, 1fr)); }
+
+ .cards-cols-7 {
+   --cards-columns: repeat(7, minmax(0, 1fr)); }
+
+ .cards-cols-8 {
+   --cards-columns: repeat(8, minmax(0, 1fr)); } }
+
+/* Table helper classes for alternate styles */
+/* MIT License | Copyright (c) Stephan Ango (@kepano) */
+.table-small table:not(.calendar) {
+ --table-text-size: 85%; }
+
+.table-tiny table:not(.calendar) {
+ --table-text-size: 75%; }
+
+.row-hover th:first-child,
+.row-hover th:first-child,
+.row-alt.markdown-source-view.mod-cm6 th:first-child,
+.row-alt.markdown-source-view.mod-cm6 td:first-child,
+.row-alt table:not(.calendar) th:first-child,
+.row-alt table:not(.calendar) tbody > tr > td:first-child,
+.table-lines.markdown-source-view.mod-cm6 th:first-child,
+.table-lines.markdown-source-view.mod-cm6 td:first-child,
+.table-lines table:not(.calendar) thead > tr > th:first-child,
+.table-lines table:not(.calendar) tbody > tr > td:first-child {
+ padding-left: 10px; }
+
+.row-alt {
+ --table-row-alt-background: var(--background-table-rows); }
+
+.col-alt {
+ --table-column-alt-background: var(--background-table-rows); }
+
+.table-tabular table:not(.calendar) {
+ font-variant-numeric: tabular-nums; }
+
+.table-lines {
+ --table-border-width: 1px;
+ --table-header-border-width: 1px;
+ --table-column-first-border-width: 1px;
+ --table-column-last-border-width: 1px;
+ --table-row-last-border-width: 1px; }
+
+.table-nowrap {
+ --table-white-space: nowrap; }
+
+.trim-cols,
+.table-nowrap .table-wrap {
+ --table-white-space: normal; }
+
+.table-numbers table:not(.calendar) {
+ counter-reset: section; }
+ .table-numbers table:not(.calendar) > thead > tr > th:first-child::before {
+   content: " ";
+   padding-right: 0.5em;
+   display: inline-block;
+   min-width: 2em; }
+ .table-numbers table:not(.calendar) > tbody > tr > td:first-child::before {
+   counter-increment: section;
+   content: counter(section) " ";
+   text-align: center;
+   padding-right: 0.5em;
+   display: inline-block;
+   min-width: 2em;
+   color: var(--text-faint);
+   font-variant-numeric: tabular-nums; }
+
+.row-lines table:not(.calendar) tbody > tr > td,
+.row-lines .table-view-table > tbody > tr > td {
+ border-bottom: 1px solid var(--background-modifier-border); }
+.row-lines table:not(.calendar) tbody > tr:last-child > td {
+ border-bottom: none; }
+
+.col-lines table:not(.calendar) tbody > tr > td:not(:last-child),
+.col-lines .table-view-table thead > tr > th:not(:last-child),
+.col-lines .table-view-table > tbody > tr > td:not(:last-child) {
+ border-right: 1px solid var(--background-modifier-border); }
+
+/* Image zoom  */
+/* MIT License | Copyright (c) Stephan Ango (@kepano) */
+body:not(.zoom-off) .view-content div:not(.canvas-node-content) img {
+ max-width: 100%;
+ cursor: zoom-in; }
+body:not(.zoom-off) .view-content img:active {
+ cursor: zoom-out; }
+body:not(.zoom-off) .view-content .markdown-preview-view img[referrerpolicy='no-referrer']:active {
+ background-color: var(--background-primary);
+ padding: 10px; }
+body:not(.zoom-off) .view-content .markdown-preview-view img[referrerpolicy='no-referrer']:active,
+body:not(.zoom-off) .view-content .image-embed:not(.canvas-node-content):active {
+ aspect-ratio: unset;
+ cursor: zoom-out;
+ display: block;
+ z-index: 200;
+ position: fixed;
+ max-height: calc(100% + 1px);
+ max-width: 100%;
+ height: calc(100% + 1px);
+ width: 100%;
+ object-fit: contain;
+ margin: -0.5px auto 0 !important;
+ text-align: center;
+ padding: 0;
+ left: 0;
+ right: 0;
+ bottom: 0; }
+body:not(.zoom-off) .view-content .image-embed:not(.canvas-node-content):active:after {
+ background-color: var(--background-primary);
+ opacity: 0.9;
+ content: " ";
+ height: calc(100% + 1px);
+ width: 100%;
+ position: fixed;
+ left: 0;
+ right: 1px;
+ z-index: 0; }
+body:not(.zoom-off) .view-content .image-embed:not(.canvas-node-content):active img {
+ aspect-ratio: unset;
+ top: 50%;
+ z-index: 99;
+ transform: translateY(-50%);
+ padding: 0;
+ margin: 0 auto;
+ width: calc(100% - 20px);
+ max-height: 95vh;
+ object-fit: contain;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ position: absolute;
+ opacity: 1; }
+
+/* Dataview and tables */
+.table-100 .el-table table,
+.table-100 .el-lang-dataview .dataview.table-view-table,
+.table-100 .el-lang-dataviewjs .dataview.table-view-table,
+.markdown-preview-view.table-100.is-readable-line-width .el-table table,
+.markdown-preview-view.table-100.is-readable-line-width .el-lang-dataview .dataview.table-view-table,
+.markdown-preview-view.table-100.is-readable-line-width .el-lang-dataviewjs .dataview.table-view-table {
+ max-width: 100% !important;
+ width: 100% !important; }
+
+.table-max .el-table table,
+.table-max .el-lang-dataview .dataview.table-view-table,
+.table-max .el-lang-dataviewjs .dataview.table-view-table,
+.markdown-preview-view.table-max .el-table table,
+.markdown-preview-view.table-max .el-lang-dataview .dataview.table-view-table,
+.markdown-preview-view.table-max .el-lang-dataviewjs .dataview.table-view-table {
+ max-width: 100% !important; }
+
+.table-wide .markdown-preview-view.is-readable-line-width .el-table table,
+.table-wide .markdown-preview-view.is-readable-line-width .el-lang-dataview .dataview.table-view-table,
+.table-wide .markdown-preview-view.is-readable-line-width .el-lang-dataviewjs .dataview.table-view-table,
+.markdown-preview-view.is-readable-line-width.table-wide .el-table table,
+.markdown-preview-view.is-readable-line-width.table-wide .el-lang-dataview .dataview.table-view-table,
+.markdown-preview-view.is-readable-line-width.table-wide .el-lang-dataviewjs .dataview.table-view-table {
+ max-width: var(--line-width-wide) !important; }
+
+.table-100 table th:first-child,
+.table-100 table td:first-child,
+.table-100 .dataview.table-view-table th:first-child,
+.table-100 .dataview.table-view-table td:first-child,
+.table-100 .markdown-source-view.mod-cm6 td:first-child,
+.table-100 .markdown-source-view.mod-cm6 th:first-child {
+ padding-left: 0px !important; }
+.table-100 table th:last-child,
+.table-100 table td:last-child,
+.table-100 .dataview.table-view-table th:last-child,
+.table-100 .dataview.table-view-table td:last-child {
+ padding-right: 0px; }
+
+/* Live Preview */
+.chart-max.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .block-language-chart,
+.chart-max .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .block-language-chart,
+.map-max.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .block-language-leaflet,
+.map-max .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .block-language-leaflet,
+.table-max.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-table-widget > table,
+.table-max .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-table-widget > table,
+.table-max.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-embed-block > .block-language-dataview,
+.table-max .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-embed-block > .block-language-dataview,
+.table-max.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-embed-block > .block-language-dataviewjs,
+.table-max .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-embed-block > .block-language-dataviewjs,
+.table-max.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-embed-block.cm-table-widget > div:not(.edit-block-button),
+.table-max .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-embed-block.cm-table-widget > div:not(.edit-block-button),
+.img-max.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-content > .image-embed,
+.img-max .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-content > .image-embed,
+.img-max.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-content > img,
+.img-max .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-content > img {
+ width: var(--max-width) !important;
+ max-width: var(--max-width) !important;
+ transform: none !important;
+ padding-left: 0;
+ margin: 0 auto !important; }
+
+.chart-wide.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .block-language-chart,
+.chart-wide .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .block-language-chart,
+.map-wide.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .block-language-leaflet,
+.map-wide .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .block-language-leaflet,
+.table-wide.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-table-widget > table,
+.table-wide .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-table-widget > table,
+.table-wide.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-embed-block > .block-language-dataview,
+.table-wide .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-embed-block > .block-language-dataview,
+.table-wide.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-embed-block > .block-language-dataviewjs,
+.table-wide .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-embed-block > .block-language-dataviewjs,
+.table-wide.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-embed-block.cm-table-widget > div:not(.edit-block-button),
+.table-wide .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-embed-block.cm-table-widget > div:not(.edit-block-button),
+.img-wide.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-content > .image-embed,
+.img-wide .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-content > .image-embed,
+.img-wide.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-content > img,
+.img-wide .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-content > img {
+ width: var(--line-width-wide) !important;
+ max-width: var(--max-width);
+ transform: none !important;
+ padding-left: 0;
+ margin: 0 auto !important; }
+
+.chart-100.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .block-language-chart,
+.chart-100 .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .block-language-chart,
+.map-100.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .block-language-leaflet,
+.map-100 .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .block-language-leaflet,
+.table-100.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width table,
+.table-100 .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width table,
+.table-100.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-embed-block > .block-language-dataview,
+.table-100 .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-embed-block > .block-language-dataview,
+.table-100.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-embed-block > .block-language-dataviewjs,
+.table-100 .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-embed-block > .block-language-dataviewjs,
+.table-100.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-embed-block.cm-table-widget > div:not(.edit-block-button),
+.table-100 .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-embed-block.cm-table-widget > div:not(.edit-block-button),
+.img-100.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-content > .image-embed,
+.img-100 .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-content > .image-embed,
+.img-100.markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-content > img,
+.img-100 .markdown-source-view.mod-cm6.is-live-preview.is-readable-line-width .cm-content > img {
+ width: 100% !important;
+ max-width: 100% !important;
+ transform: none !important;
+ margin: 0 auto !important;
+ padding-left: 0; }
+
+/* Custom line width with folding offset */
+@media (max-width: 400pt) {
+ .is-mobile {
+   --folding-offset:0px; } }
+.markdown-source-view.wide,
+.markdown-preview-view.wide {
+ --line-width-adaptive:var(--line-width-wide); }
+
+.markdown-source-view.max,
+.markdown-preview-view.max {
+ --line-width-adaptive:300em;
+ --line-width-wide:300em; }
+
+/* With readable line width */
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer {
+ max-width: var(--max-width);
+ width: var(--line-width-adaptive);
+ padding-left: 0; }
+
+.markdown-source-view.is-readable-line-width .CodeMirror {
+ padding-left: 0;
+ padding-right: 0;
+ margin: 0 auto 0 auto;
+ width: var(--line-width-adaptive);
+ max-width: var(--max-width); }
+
+/* Readable line width off */
+.markdown-reading-view .markdown-preview-view:not(.is-readable-line-width) > .markdown-preview-sizer {
+ max-width: var(--max-width);
+ margin: 0 auto;
+ padding-left: var(--folding-offset); }
+
+.is-mobile .markdown-source-view.mod-cm6 .cm-gutters {
+ padding-right: 0; }
+
+/* Requires Minimal plugin 5.2.1+ */
+.minimal-readable-off .view-header-title-container {
+ width: var(--max-width); }
+
+/* Max width for readable-line length off */
+.markdown-source-view.mod-cm6:not(.is-readable-line-width) .inline-title,
+.markdown-source-view.mod-cm6:not(.is-readable-line-width) .cm-contentContainer {
+ max-width: var(--max-width);
+ margin: 0 0 0 calc(50% - var(--max-width)/2) !important;
+ padding-left: var(--folding-offset); }
+
+.markdown-source-view.mod-cm6 .cm-content > .cm-embed-block[contenteditable=false] {
+ overflow-x: auto; }
+
+
+/* Dataview plugin */
+body .table-view-table > thead > tr > th,
+.markdown-preview-view .table-view-table > thead > tr > th {
+ font-weight: 400;
+ font-size: var(--table-text-size);
+ color: var(--text-muted);
+ border-bottom: 1px solid var(--background-modifier-border);
+ cursor: var(--cursor); }
+
+table.dataview ul.dataview-ul {
+ list-style: none;
+ padding-inline-start: 0;
+ margin-block-start: 0em !important;
+ margin-block-end: 0em !important; }
+
+.markdown-source-view.mod-cm6 .table-view-table > tbody > tr > td,
+.markdown-preview-view .table-view-table > tbody > tr > td {
+ max-width: var(--max-col-width); }
+
+body .dataview.small-text {
+ color: var(--text-faint); }
+
+/* Style Settings preferences */
+.style-settings-container[data-level="2"] {
+ background: var(--background-secondary);
+ border: 1px solid var(--ui1);
+ border-radius: 5px;
+ padding: 10px 20px;
+ margin: 2px 0 2px -20px; }
+
+.workspace-leaf-content[data-type="style-settings"] .view-content {
+ padding: var(--size-4-4) 0 var(--size-4-4) var(--folding-offset); }
+.workspace-leaf-content[data-type="style-settings"] .view-content > div {
+ width: var(--line-width-adaptive);
+ max-width: var(--max-width);
+ margin: 0 auto; }
+.workspace-leaf-content[data-type="style-settings"] .style-settings-heading[data-level="0"] .setting-item-name {
+ padding-left: 17px; }
+.workspace-leaf-content[data-type="style-settings"] .setting-item {
+ max-width: 100%;
+ margin: 0 auto; }
+.workspace-leaf-content[data-type="style-settings"] .setting-item-name {
+ position: relative; }
+.workspace-leaf-content[data-type="style-settings"] .style-settings-collapse-indicator {
+ position: absolute;
+ left: 0; }
+
+.setting-item-heading.style-settings-heading,
+.style-settings-container .style-settings-heading {
+ cursor: var(--cursor); }
+
+.modal.mod-settings .setting-item .pickr button.pcr-button {
+ box-shadow: none;
+ border-radius: 40px;
+ height: 24px;
+ width: 24px; }
+
+.setting-item .pickr .pcr-button:after,
+.setting-item .pickr .pcr-button:before {
+ border-radius: 40px;
+ box-shadow: none;
+ border: none; }
+
+.setting-item.setting-item-heading.style-settings-heading.is-collapsed {
+ border-bottom: 1px solid var(--background-modifier-border); }
+
+.setting-item.setting-item-heading.style-settings-heading {
+ border: 0;
+ padding: 10px 0 5px;
+ margin-bottom: 0; }
+
+.mod-root .workspace-leaf-content[data-type="style-settings"] .style-settings-container .setting-item:not(.setting-item-heading) {
+ flex-direction: row;
+ align-items: center;
+ padding: 0.5em 0; }
+
+.workspace-split:not(.mod-root) .workspace-leaf-content[data-type="style-settings"] .setting-item-name {
+ font-size: var(--font-adaptive-smaller); }
+
+.setting-item .style-settings-import,
+.setting-item .style-settings-export {
+ text-decoration: none;
+ font-size: var(--font-ui-small);
+ font-weight: 500;
+ color: var(--text-muted);
+ margin: 0;
+ padding: 2px 8px;
+ border-radius: 5px;
+ cursor: var(--cursor); }
+
+.style-settings-import:hover,
+.style-settings-export:hover {
+ background-color: var(--background-modifier-hover);
+ color: var(--text-normal);
+ cursor: var(--cursor); }
+
+.themed-color-wrapper > div + div {
+ margin-top: 0;
+ margin-left: 6px; }
+
+.theme-light .themed-color-wrapper > .theme-light {
+ background-color: transparent; }
+
+.theme-light .themed-color-wrapper > .theme-dark {
+ background-color: rgba(0, 0, 0, 0.8); }
+
+.theme-dark .themed-color-wrapper > .theme-dark {
+ background-color: transparent; }
+
+/* Remove hover effect */
+body:not(.row-hover) .dataview.task-list-item:hover,
+body:not(.row-hover) .dataview.task-list-basic-item:hover,
+body:not(.row-hover) .table-view-table > tbody > tr:hover {
+ background-color: transparent !important;
+ box-shadow: none; }
+
 }
